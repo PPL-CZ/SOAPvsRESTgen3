@@ -59,16 +59,17 @@ export type TransformationResultPart = Pick<
 
 // Detailnější typy pro strukturu dat v převodníku
 export interface SenderRecipient {
-  name: string;
+  name?: string;  // ✅ ZMĚNĚNO: z string na string | undefined
   name2?: string;
-  street: string;
-  city: string;
-  zipCode: string;
-  country: string;
+  street?: string;  // ✅ ZMĚNĚNO: z string na string | undefined
+  city?: string;  // ✅ ZMĚNĚNO: z string na string | undefined
+  zipCode?: string;  // ✅ ZMĚNĚNO: z string na string | undefined
+  country?: string;  // ✅ ZMĚNĚNO: z string na string | undefined
   contact?: string;
   phone?: string;
   email?: string;
 }
+
 export interface CashOnDelivery {
   codCurrency?: string;
   codPrice?: number;
@@ -208,16 +209,16 @@ export type ApiExample = {
   categoryEn?: string; // ✅ Volitelné
 };
 
-// // ✅ OPRAVENO: FaqItem - anglické verze jsou volitelné
-// export type FaqItem = {
-//   id: string;
-//   question: string;
-//   questionEn?: string; // ✅ Volitelné
-//   answer: string;
-//   answerEn?: string; // ✅ Volitelné
-//   category: string;
-//   categoryEn?: string; // ✅ Volitelné
-// };
+// ✅ OPRAVENO: FaqItem - ODKOMENTOVÁNO a anglické verze jsou volitelné
+export type FaqItem = {
+  id: string;
+  question: string;
+  questionEn?: string; // ✅ Volitelné
+  answer: string;
+  answerEn?: string; // ✅ Volitelné
+  category: string;
+  categoryEn?: string; // ✅ Volitelné
+};
 
 // Hlavní typ pro celý datový objekt
 export type ApiDataType = {
@@ -226,7 +227,7 @@ export type ApiDataType = {
   generalDifferences: GeneralDifference[];
   categories: Category[];
   apiExamples: ApiExample[];
-  // faqItems: FaqItem[];
+  faqItems: FaqItem[];  // ✅ OPRAVENO: ODKOMENTOVÁNO
   translations: {
     [key: string]: {
       [key: string]: string | string[];

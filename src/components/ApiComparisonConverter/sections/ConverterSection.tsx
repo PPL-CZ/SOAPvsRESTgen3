@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback, useEffect } from 'react';
 import {
   Check,
@@ -92,7 +93,8 @@ const ConverterSection: React.FC<ConverterSectionProps> = ({
     useState<keyof typeof API_ENVIRONMENTS>('production');
   const [isProcessing, setIsProcessing] = useState(false);
   const [liveTransformEnabled, setLiveTransformEnabled] = useState(true);
-  const [debounceTimeout, setDebounceTimeout] = useState<number | null>(null);
+  // ✅ OPRAVENO: Změna typu z number na NodeJS.Timeout
+  const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Získání aktuální URL na základě vybraného prostředí
   const getCurrentApiUrl = () => API_ENVIRONMENTS[selectedEnvironment].url;
@@ -216,7 +218,7 @@ const ConverterSection: React.FC<ConverterSectionProps> = ({
         setIsProcessing(false);
       }
     },
-    [language, t]
+    [soapInput, language, t] // ✅ OPRAVENO: Přidán soapInput do dependencies
   );
 
   // Live transformace s debounce
@@ -466,7 +468,6 @@ const ConverterSection: React.FC<ConverterSectionProps> = ({
           </div>
         </div>
       </div>
-
       {/* Upozornění (vždy viditelné) */}
       <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
         <div className="flex items-start gap-2">

@@ -28,24 +28,24 @@ export const transformCreateOrdersToRest = (
       extractValue(xml, 'PackProductType') || defaultProductType;
 
     const partialSender: Partial<SenderRecipient> = {
-      name: extractNestedValue(xml, 'Sender', 'Name'),
-      street: extractNestedValue(xml, 'Sender', 'Street'),
-      city: extractNestedValue(xml, 'Sender', 'City'),
-      zipCode: extractNestedValue(xml, 'Sender', 'ZipCode'),
+      name: extractNestedValue(xml, 'Sender', 'Name')??undefined,
+      street: extractNestedValue(xml, 'Sender', 'Street')??undefined,
+      city: extractNestedValue(xml, 'Sender', 'City')??undefined,
+      zipCode: extractNestedValue(xml, 'Sender', 'ZipCode')??undefined,
       country: senderCountry,
-      phone: extractNestedValue(xml, 'Sender', 'Phone'),
-      email: extractNestedValue(xml, 'Sender', 'Email'),
+      phone: extractNestedValue(xml, 'Sender', 'Phone')??undefined,
+      email: extractNestedValue(xml, 'Sender', 'Email')??undefined,
       name2: extractNestedValue(xml, 'Sender', 'Name2') ?? undefined,
       contact: extractNestedValue(xml, 'Sender', 'Contact') ?? undefined,
     };
     const partialRecipient: Partial<SenderRecipient> = {
-      name: extractNestedValue(xml, 'Recipient', 'Name'),
-      street: extractNestedValue(xml, 'Recipient', 'Street'),
-      city: extractNestedValue(xml, 'Recipient', 'City'),
-      zipCode: extractNestedValue(xml, 'Recipient', 'ZipCode'),
+      name: extractNestedValue(xml, 'Recipient', 'Name')??undefined,
+      street: extractNestedValue(xml, 'Recipient', 'Street')??undefined,
+      city: extractNestedValue(xml, 'Recipient', 'City')??undefined,
+      zipCode: extractNestedValue(xml, 'Recipient', 'ZipCode')??undefined,
       country: recipientCountry,
-      phone: extractNestedValue(xml, 'Recipient', 'Phone'),
-      email: extractNestedValue(xml, 'Recipient', 'Email'),
+      phone: extractNestedValue(xml, 'Recipient', 'Phone')??undefined,
+      email: extractNestedValue(xml, 'Recipient', 'Email')??undefined,
       name2: extractNestedValue(xml, 'Recipient', 'Name2') ?? undefined,
       contact: extractNestedValue(xml, 'Recipient', 'Contact') ?? undefined,
     };
@@ -155,13 +155,13 @@ export const transformCreatePickupOrdersToRest = (
 ): TransformationResultPart => {
   try {
     const partialSender: Partial<SenderRecipient> = {
-      name: extractNestedValue(xml, 'Sender', 'Name'),
-      street: extractNestedValue(xml, 'Sender', 'Street'),
-      city: extractNestedValue(xml, 'Sender', 'City'),
-      zipCode: extractNestedValue(xml, 'Sender', 'ZipCode'),
+      name: extractNestedValue(xml, 'Sender', 'Name')??undefined,
+      street: extractNestedValue(xml, 'Sender', 'Street')??undefined,
+      city: extractNestedValue(xml, 'Sender', 'City')??undefined,
+      zipCode: extractNestedValue(xml, 'Sender', 'ZipCode')??undefined,
       country: extractNestedValue(xml, 'Sender', 'Country') || 'CZ',
-      phone: extractNestedValue(xml, 'Sender', 'Phone'),
-      email: extractNestedValue(xml, 'Sender', 'Email'),
+      phone: extractNestedValue(xml, 'Sender', 'Phone')??undefined,
+      email: extractNestedValue(xml, 'Sender', 'Email')??undefined,
       name2: extractNestedValue(xml, 'Sender', 'Name2') ?? undefined,
       contact: extractNestedValue(xml, 'Sender', 'Contact') ?? undefined,
     };
